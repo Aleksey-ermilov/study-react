@@ -1,13 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 
-const Select = () => {
-    return (
-        <select>
-            <option>qwe</option>
-            <option>qwe</option>
-            <option>qwe</option>
-        </select>
-    )
-};
-
-export default Select;
+export default class Select extends Component{
+    render () {
+        const  {label} = this.props
+        return (
+            <select>
+                {label}            
+            </select>
+        )
+    }
+}

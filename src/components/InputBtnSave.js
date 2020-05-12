@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 
-const InputBtnSave = () => {
-    return (
-        <div>
+export default class InputBtnSave extends Component {
+    render() {
+        return (
+            <div>
             <input type="text"/>
             <button>save</button>
         </div>
-    )
-};
-
-export default InputBtnSave
+        )
+    }
+}

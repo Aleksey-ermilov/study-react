@@ -6,17 +6,26 @@ import InputBtnSave from "./components/InputBtnSave";
 
 import arrHome from "./JsonOb";
 
+const element = arrHome.map( (home) => {
+  
+  return (
+    <option>
+      {home.name}
+    </option>
+  )  
+});
+
 function App() {
   return (
       <div>
         <div>
           <h1>Home</h1>
-          <Select/>
+          <Select label={element}/>
         </div>
 
         <div>
           <h1>Edit Home</h1>
-          <InputBtnSave/>
+          <InputBtnSave />
         </div>
       </div>
   );
