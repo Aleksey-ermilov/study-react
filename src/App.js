@@ -5,16 +5,7 @@ import Select from "./components/Select";
 import InputSave from "./components/InputSave";
 import BtnSave from "./components/BtnSave";
 
-/*
-import { jsonOb } from'./JsonOb'
-
-let arrHome = jsonOb.map(h => ({
-  name: h.homeName,
-  id: h.id,
-  rooms: h.rooms.map(a => ({id: a.id, roomName: a.roomName }))
-  //rooms: h.rooms.map(a => JSON.stringify(({id: a.id, roomName: a.roomName })))
-}));
-*/
+import arrHome from "./JsonOb";
 
 function App() {
   return (
@@ -25,6 +16,7 @@ function App() {
         </div>
 
         <div>
+            <p>{arrHome[0].name}</p>
           <h1>Edit Home</h1>
           <InputSave/>
           <BtnSave/>
