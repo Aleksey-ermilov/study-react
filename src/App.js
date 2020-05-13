@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component }from 'react';
 import './App.css';
 
 import Select from "./components/Select";
@@ -7,28 +7,38 @@ import InputBtnSave from "./components/InputBtnSave";
 import arrHome from "./JsonOb";
 
 const element = arrHome.map( (home) => {
-  
-  return (
-    <option>
-      {home.name}
-    </option>
-  )  
+
+    return (
+        <option
+            key={home.id}
+            value={home.id}
+        >
+            {home.name}
+        </option>
+    )
 });
 
-function App() {
-  return (
-      <div>
-        <div>
-          <h1>Home</h1>
-          <Select label={element}/>
-        </div>
+export default class App extends Component{
 
-        <div>
-          <h1>Edit Home</h1>
-          <InputBtnSave />
-        </div>
-      </div>
-  );
+    updateData = (value) => {
+        console.log(value)
+        //this.setState({ name: value })
+    }
+
+    render() {
+        return (
+            <div>
+                <div>
+                    <h1>Home</h1>
+                    <Select label={element}/>
+                </div>
+
+                <div>
+                    <h1>Edit Home</h1>
+                    <InputBtnSave updateData={this.updateData}/>
+                </div>
+            </div>
+        )
+    }
+
 }
-
-export default App;
