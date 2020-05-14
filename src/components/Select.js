@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 
-export default class Select extends Component{
-    sel (event){
-        console.log(event.target.value)
-    }
+export default class Select extends Component{    
 
     render () {
-        const  {label} = this.props;
+        const  { label, click } = this.props;
         return (
             <select
-            onChange={this.sel}
+            onChange={ (event) => click(event.target.value) }
             >
                 {label}            
             </select>
