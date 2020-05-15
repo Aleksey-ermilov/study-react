@@ -12,49 +12,50 @@ export default class App extends Component{
         super(props);
         this.state = {
             arrHome,
-            id : arrHome[0].id
+            id : arrHome[0].id,
+            selectedHome: arrHome[0]
         }
     }
 
     updateData (value) {
-        console.log(value)    
-        console.log(this.state.id)    
+        console.log(value);
+        console.log(this.state.id);
     }
 
-    idSelect (id) {
-        console.log(id);   
-        this.setState( { id } )     
-    }
-
-    homeName (id) {
+    /*homeName (id) {
         return this.state.arrHome.find( item => id === item.id )
+    }*/
+
+    onChange = async (e) => {
+        const { selectedIndex } = e.target;
+        await this.setState({ selectedHome: this.state.arrHome[selectedIndex]})
+        console.log(this.state.selectedHome)
+        console.log(selectedIndex)
     }
 
-    render() {       
+    chooseHome = home => () => {
+        console.log(home)
+    }
 
-        const element = this.state.arrHome.map( (home) => {
-            return (
-                <option
-                    key={home.id}
-                    value={home.id}
-                >
-                    {home.name}
-                </option>
-            )
-        });
+    render() {
+        const { arrHome, selectedHome } = this.state
 
         return (
             <div className={"container"}>
                 <div>
                     <h1>Home</h1>
-                    <Select label={element} click={ (id) => { this.idSelect(id) } }  />
+                    <Select
+                        // click={ (id) => { this.idSelect(id) } }
+                        arrHome={ arrHome }
+                        onChange={ this.onChange }
+                        chooseHome={ this.chooseHome}
+                    />
                 </div>
 
                 <div>
                     <h1>Edit Home</h1>
-                    <InputBtnSave 
-                        updateData={ (value) => this.updateData(value) }
-                        homeName={ this.homeName(this.state.id) }
+                    <InputBtnSave
+                        selectedHome={ selectedHome }
                         />
                 </div>
             </div>
