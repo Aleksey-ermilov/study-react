@@ -2,38 +2,30 @@ import React, { Component } from "react";
 
 export default class InputBtnSave extends Component {
 
-    /*constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
-            selectedHome : props.selectedHome
+            name : props.selectedHome.name
         }
-    }*/
+    }
 
-
-    text = (event) => {
-        let home = this.state.selectedHome;
-        home.name = event.target.value;
-        this.setState({ selectedHome: home })
+    changeHome = (e) => {  
+        console.log(e.target.value);
+           
+        this.setState({ name: e.target.value })
     }
     
     render() {
-        const { selectedHome } = this.props
-        this.setState( {
-            selectedHome
-        })
 
+        const { name } = this.state
+        
         return (
             <div>
             <input type="text"
-                   value={ this.state.selectedHome.name }
-                   onChange={ this.text }
-
-                   //defaultValue={ selectedHome.name}
-
+                   value={ name }
+                   onChange={ this.changeHome }
             />
-            <button
-                //onClick={ (event) => { updateData(this.state.name) }}
-            >save</button>
+            <button>save</button>
         </div>
         )
     }

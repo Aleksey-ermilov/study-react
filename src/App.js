@@ -12,29 +12,16 @@ export default class App extends Component{
         super(props);
         this.state = {
             arrHome,
-            id : arrHome[0].id,
-            selectedHome: arrHome[0]
+            selectedHome: arrHome[1]
         }
     }
 
-    updateData (value) {
-        console.log(value);
-        console.log(this.state.id);
-    }
-
-    /*homeName (id) {
-        return this.state.arrHome.find( item => id === item.id )
-    }*/
-
-    onChange = async (e) => {
+    onChange = (e) => {
         const { selectedIndex } = e.target;
-        await this.setState({ selectedHome: this.state.arrHome[selectedIndex]})
-        console.log(this.state.selectedHome)
-        console.log(selectedIndex)
-    }
-
-    chooseHome = home => () => {
-        console.log(home)
+        console.log(selectedIndex);
+        
+        let home = this.state.arrHome[selectedIndex]
+        this.setState({ selectedHome: home})        
     }
 
     render() {
@@ -44,11 +31,9 @@ export default class App extends Component{
             <div className={"container"}>
                 <div>
                     <h1>Home</h1>
-                    <Select
-                        // click={ (id) => { this.idSelect(id) } }
+                    <Select                       
                         arrHome={ arrHome }
-                        onChange={ this.onChange }
-                        chooseHome={ this.chooseHome}
+                        onChange={ this.onChange }                        
                     />
                 </div>
 

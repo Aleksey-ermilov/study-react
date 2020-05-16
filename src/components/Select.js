@@ -4,12 +4,11 @@ export default class Select extends Component{
 
     render () {
 
-        const  { arrHome, onChange, chooseHome } = this.props;
+        const  { arrHome, onChange } = this.props;
 
         const element = arrHome.map( (home) => {
             return (
                 <option
-
                     key={home.id}
                     value={home.id}
                 >
@@ -20,7 +19,7 @@ export default class Select extends Component{
 
         return (
             <select
-                onChange={(e) => { onChange(e) } }
+                onChange={ onChange }
             >
                 {element}
             </select>
