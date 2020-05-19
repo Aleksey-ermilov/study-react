@@ -9,33 +9,33 @@ export default class InputBtnSave extends Component {
         }
     }
 
-    changeHome = (e) => {          
+    changeHome = (e) => {
         this.setState({ name: e.target.value })
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.selectedHome.id !== prevProps.selectedHome.id) {
-          this.setState({
-            name : this.props.selectedHome.name
-          })          
+            this.setState({
+                name : this.props.selectedHome.name
+            })
         }
-      }
-    
+    }
+
     render() {
 
         const { name } = this.state
         const { getInputValue } = this.props
-        
+
         return (
             <div>
-            <input type="text"
-                   value={ name }
-                   onChange={ this.changeHome }
-            />
-            <button
-                onClick={ () => getInputValue(name) }            
-            >save</button>
-        </div>
+                <input type="text"
+                       value={ name }
+                       onChange={ this.changeHome }
+                />
+                <button
+                    onClick={ () => getInputValue(name) }
+                >save</button>
+            </div>
         )
     }
 }
