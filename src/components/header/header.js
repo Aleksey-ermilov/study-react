@@ -5,7 +5,8 @@ export default class Header extends Component{
     render() {
         return (
             <nav>
-                <ul>
+                <h1>Какие-то ссылки</h1>
+                {/*<ul>
                     <li>
                         <a href={"#"}>Главная</a>
                     </li>
@@ -24,7 +25,7 @@ export default class Header extends Component{
                     <li>
                         <a href={"#"} >Выход</a>
                     </li>
-                </ul>
+                </ul>*/}
             </nav>
         )
     }

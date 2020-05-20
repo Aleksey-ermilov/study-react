@@ -1,8 +1,10 @@
 import React from "react";
 import {Switch, Route, Redirect } from "react-router-dom";
+
 import HomePage from "./pages/homePage";
 import AuthPage from "./pages/authPage";
 import RegPage from "./pages/regPage";
+import MainPage from "./pages/mainPage";
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated){
@@ -11,7 +13,11 @@ export const useRoutes = isAuthenticated => {
                 <Route path="/home" exact> {/*exact - для полного совподения пути*/}
                 <HomePage/>
                 </Route>
-                <Redirect to="/home" />
+                <Route path="/" exact>
+                    <MainPage/>
+                </Route>
+
+                <Redirect to="/" />
             </Switch>
         )
     }
@@ -19,11 +25,14 @@ export const useRoutes = isAuthenticated => {
     return (
         <Switch>
             <Switch>
-                <Route path="/auth" exact> {/*exact - для полного совподения пути*/}
+                <Route path="/auth" exact>
                     <AuthPage/>
                 </Route>
-                <Route path="/reg" exact> {/*exact - для полного совподения пути*/}
+                <Route path="/reg" exact>
                     <RegPage/>
+                </Route>
+                <Route path="/" exact>
+                    <MainPage/>
                 </Route>
 
                 <Redirect to="/auth" />

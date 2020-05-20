@@ -1,16 +1,14 @@
 import React from "react";
-
-import { Reg } from "../components/reg/reg"
 import Header from "../components/header/header";
 
-function RegPage() {
+function MainPage() {
 
     return (
         <>
             <Header />
-            <Reg />
+            <h1>Main Page</h1>
         </>
     )
 }
 
-export default RegPage;
+export default MainPage;
