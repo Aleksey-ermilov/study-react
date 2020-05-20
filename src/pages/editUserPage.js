@@ -1,10 +1,12 @@
 import React from "react";
 
+import EditUser from "../components/editUser/editUser"
+
 function EditUserPage() {
 
     return (
-        <>
-            <h1>Edit User Page</h1>
+        <>            
+            <EditUser />
         </>
     )
 }

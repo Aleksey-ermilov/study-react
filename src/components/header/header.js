@@ -1,32 +1,39 @@
 import React, { Component }from 'react';
+import {NavLink} from "react-router-dom"
+
 import './header.css';
 
 export default class Header extends Component{
     render() {
+
         return (
-            <nav>
-                <h1>Какие-то ссылки</h1>
-                {/*<ul>
+            
+            <nav>                
+                <ul>
                     <li>
-                        <a href={"#"}>Главная</a>
+                        <NavLink to="/">Главная</NavLink>
                     </li>
                     <li>
-                        <a href={"#"} >Авторизация</a>
+                        <NavLink to="/auth">Авторизация</NavLink>
                     </li>
                     <li>
-                        <a href={"#"} >Регистрация</a>
+                        <NavLink to="/reg" >Регистрация</NavLink>
+                    </li>
+
+
+
+
+                    <li>
+                        <NavLink to="/editUser" >Редактирвать профиль</NavLink>
                     </li>
                     <li>
-                        <a href={"#"} >Редактирвать профиль</a>
+                        <NavLink to="/home" >Homes</NavLink>
                     </li>
                     <li>
-                        <a href={"#"} >Homes</a>
+                        <a href="#" >Выход</a>
                     </li>
-                    <li>
-                        <a href={"#"} >Выход</a>
-                    </li>
-                </ul>*/}
-            </nav>
+                </ul>
+            </nav>             
         )
     }
 }

@@ -5,13 +5,17 @@ import HomePage from "./pages/homePage";
 import AuthPage from "./pages/authPage";
 import RegPage from "./pages/regPage";
 import MainPage from "./pages/mainPage";
+import EditUserPage from "./pages/editUserPage"
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated){
         return (
             <Switch>
                 <Route path="/home" exact> {/*exact - для полного совподения пути*/}
-                <HomePage/>
+                    <HomePage/>
+                </Route>
+                <Route path="/editUser" exact> {/*exact - для полного совподения пути*/}
+                    <EditUserPage/>
                 </Route>
                 <Route path="/" exact>
                     <MainPage/>

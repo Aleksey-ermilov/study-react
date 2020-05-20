@@ -1,5 +1,8 @@
 import React, { Component }from 'react';
 import {BrowserRouter} from 'react-router-dom'
+
+import Header from "./components/header/header"
+
 import './App.css';
 
 import {useRoutes} from "./routes";
@@ -11,9 +14,10 @@ export default class App extends Component{
         const routes = useRoutes(false)
 
         return (
-            <BrowserRouter>
-                {routes}
-            </BrowserRouter>
+                <BrowserRouter>
+                    <Header />
+                    {routes}
+                </BrowserRouter>
         )
     }
 }
