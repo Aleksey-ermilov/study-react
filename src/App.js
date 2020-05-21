@@ -6,18 +6,25 @@ import Header from "./components/header/header"
 import './App.css';
 
 import {useRoutes} from "./routes";
+import {useAuth} from "./service/auth";
+import {AuthContext} from "./context/authContext";
 
 
-export default class App extends Component{
-    render() {
+export const App = () => {
 
-        const routes = useRoutes(false)
+        const { token, login, logout, user } = useAuth()
+        const isAuthenticated = !!token
+        const routes = useRoutes(isAuthenticated)
 
         return (
+            <AuthContext.Provider value={ {
+                token, login, logout, user, isAuthenticated
+            } }>
                 <BrowserRouter>
                     <Header />
                     {routes}
                 </BrowserRouter>
+            </AuthContext.Provider>
         )
-    }
+
 }

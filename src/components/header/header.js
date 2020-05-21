@@ -1,10 +1,19 @@
-import React, { Component }from 'react';
-import {NavLink} from "react-router-dom"
+import React, {useContext} from 'react';
+import {NavLink, useHistory} from "react-router-dom"
 
 import './header.css';
+import {AuthContext} from "../../context/authContext";
 
-export default class Header extends Component{
-    render() {
+const Header = () => {
+    const history = useHistory()
+    const auth = useContext(AuthContext)
+
+    const logout = event => {
+        event.preventDefault()
+        auth.logout()
+        history.push("/")
+    }
+
 
         return (
             
@@ -30,14 +39,15 @@ export default class Header extends Component{
                         <NavLink to="/home" >Homes</NavLink>
                     </li>
                     <li>
-                        <a href="#" >Выход</a>
+                        <a href="/" onClick={logout} >Выход</a>
                     </li>
                 </ul>
             </nav>             
         )
-    }
+
 }
 
+export default Header
 
 
 

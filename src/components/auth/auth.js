@@ -1,8 +1,10 @@
-import React, { useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './auth.css';
 import {useHttp} from "../../service/http";
+import {AuthContext} from "../../context/authContext";
 
 export const Auth = () => {
+    const auth = useContext(AuthContext)
     const { loading, error, request, clearError } = useHttp()
     const [form, setForm] = useState({
         email: "", password: ""
@@ -21,6 +23,7 @@ export const Auth = () => {
         try {
             event.preventDefault();
             const data = await request("http://localhost:3001/user/authorization", "POST", {...form})
+            auth.login(data.token, data.user)
             console.log("Data", data)
         }catch (e) {}
     }
