@@ -9,7 +9,18 @@ const mes = require("./responseOnFront");
 
 module.exports.reg = function (request, response) {
     console.log(request.url);
-    let user = request.body;
+    console.log(request.body);
+    
+    // let user = request.body;
+
+    let user = {
+        email: request.body.email || null,
+        password: request.body.password || null,
+        surname: request.body.surname || null,
+        name: request.body.name || null,
+        age: request.body.age || null,
+        gender: request.body.gender || null,
+    }
 
     let newUser = new User({
         _id: new mongoose.Types.ObjectId(),
@@ -31,7 +42,7 @@ module.exports.reg = function (request, response) {
                 if (err) {
                     response.send(mes(false, err));
                 }
-                home.findHomeByIdUser(user._id)
+                
                 response.send(mes(true, 'Пользователь зарегестрирован', user));
             });
         }else {

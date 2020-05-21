@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import './auth.css';
 import {useHttp} from "../../service/http";
 import {AuthContext} from "../../context/authContext";
+import {config} from "../../config/config"
 
 export const Auth = () => {
     const auth = useContext(AuthContext)
@@ -22,7 +23,7 @@ export const Auth = () => {
     const requestServer = async (event) => {
         try {
             event.preventDefault();
-            const data = await request("http://localhost:3001/user/authorization", "POST", {...form})
+            const data = await request(`${config.server}/user/authorization`, "POST", {...form})
             auth.login(data.token, data.user)
             console.log("Data", data)
         }catch (e) {}

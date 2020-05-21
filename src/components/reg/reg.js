@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import {useHistory} from "react-router-dom"
 import './reg.css';
 import {useHttp} from "../../service/http";
+import {config} from "../../config/config"
 
 export const Reg = () => {
+
+    const history = useHistory()
 
     const { loading, error, request, clearError } = useHttp()
     const [form, setForm] = useState({
@@ -21,8 +25,9 @@ export const Reg = () => {
     const requestServer = async (event) => {
         try {
             event.preventDefault();
-            const data = await request("http://localhost:3001/user/registration", "POST", {...form})
+            const data = await request(`${config.server}/user/registration`, "POST", {...form})
             console.log("Data", data)
+            history.push("/auth")
         }catch (e) {}
     }
 
