@@ -14,9 +14,27 @@ const Header = () => {
         history.push("/")
     }
 
-
-        return (
-            
+    if (auth.isAuthenticated){
+        return(
+            <nav>                
+                <ul>
+                    <li>
+                        <NavLink to="/">Главная</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/editUser" >Редактирвать профиль</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/home" >Homes</NavLink>
+                    </li>
+                    <li>
+                        <a href="/" onClick={logout} >Выход</a>
+                    </li>
+                </ul>
+            </nav> 
+        )
+    } else {
+        return(
             <nav>                
                 <ul>
                     <li>
@@ -28,22 +46,10 @@ const Header = () => {
                     <li>
                         <NavLink to="/reg" >Регистрация</NavLink>
                     </li>
-
-
-
-
-                    <li>
-                        <NavLink to="/editUser" >Редактирвать профиль</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/home" >Homes</NavLink>
-                    </li>
-                    <li>
-                        <a href="/" onClick={logout} >Выход</a>
-                    </li>
                 </ul>
-            </nav>             
+            </nav>
         )
+    }
 
 }
 

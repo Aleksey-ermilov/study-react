@@ -1,12 +1,12 @@
 import React, { Component }from 'react';
-import './homePage.css';
+
 
 import Select from "./select";
 import InputBtnSave from "./inputBtnSave";
 
 import arrHome from "./JsonOb";
 
-export default class home extends Component{
+export default class Home extends Component{
 
     constructor(props) {
         super(props);

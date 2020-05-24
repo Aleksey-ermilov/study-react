@@ -9,6 +9,10 @@ router.post("/authorization", userController.auth);
 
 router.post('/editUser', userController.editUser);
 
+router.post('/editHome', userController.postEditHome);
+
+router.get('/editHome/:id', userController.getEditHome);
+
 module.exports =  router;
 
 

@@ -50,9 +50,10 @@ module.exports.createHome = function (user){
 
 
 
-module.exports.findHomeByIdUser = function (id) {
-    User.findById(id).populate('home').exec((err,r) => {
-        console.log(r)
+module.exports.findHomeByIdUser = function (id, callback) {
+    User.findById(id).populate('home').exec((err,r) => {       
+
+        callback(r.home)        
     });
 };
 

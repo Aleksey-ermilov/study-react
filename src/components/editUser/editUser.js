@@ -2,9 +2,12 @@ import React, { useState, useEffect }from 'react';
 
 import {config} from "../../config/config"
 import {useHttp} from "../../service/http"
+import {LocalStor} from "../../service/localStor"
 
 const EditUser = () => {
-    let storUser = JSON.parse(localStorage.getItem("user"))
+
+    const {getItem, setItem} = LocalStor()
+    let storUser = getItem("user")
     let { user } = storUser
     
     const { loading, error, request, clearError } = useHttp()
@@ -38,6 +41,10 @@ const EditUser = () => {
                 localStorage.setItem("user", JSON.stringify({
                     user: storUser.user, token: storUser.token
                 }))
+
+                setItem("user",{
+                    user: storUser.user, token: storUser.token
+                })
                 console.log("Data", data)
             }catch (e) {}
         }

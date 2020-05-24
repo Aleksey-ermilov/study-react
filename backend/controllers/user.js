@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
-const home = require("../home");
 const User = require("../model/User");
+const Home = require("../model/Home");
+
+const home = require("../home");
 const token = require("../controllers/token");
 const mes = require("./responseOnFront");
 
@@ -40,7 +42,8 @@ module.exports.reg = function (request, response) {
 
             newUser.save(function (err, user) {
                 if (err) {
-                    response.send(mes(false, err));
+                    response.send(mes(false, "Такой пользователь уже есть"));
+                    return
                 }
                 
                 response.send(mes(true, 'Пользователь зарегестрирован', user));
@@ -49,7 +52,7 @@ module.exports.reg = function (request, response) {
             response.send(mes(false, "Такой пользователь уже есть"));
         }
         console.log(user);
-    });
+    });  
 };
 
 
@@ -109,4 +112,36 @@ module.exports.editUser = (request, response) => {
     });
 };
 
+module.exports.postEditHome = (request, response) => {
+    console.log(request.url);
+    // console.log(request.body)
+
+    const arr = request.body.arrHome
+
+    arr.forEach( (item, index) => {
+        Home.findById({_id: item._id}, (err, i) => {           
+
+            i.name = item.name;
+            i.save();
+        })
+    });
+
+
+    home.findHomeByIdUser(request.body.id, (arr) => {
+        response.send({success: true, message:"arr Home", arr: arr})
+    })
+    
+}
+
+module.exports.getEditHome = (request, response) => {
+    console.log(request.url);
+    console.log(request.params.id);
+
+    home.findHomeByIdUser(request.params.id, (arr) => {
+        console.log("getEditHome",arr)
+        response.send({success: true, message:"arr Home", arr: arr})
+    })
+    
+    
+}
 

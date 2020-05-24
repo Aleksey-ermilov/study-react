@@ -6,8 +6,8 @@ let Schema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Home'
     }],
-    email: String,
-    password: String,
+    email: {type: String, unique: true, required : true, dropDups: true},
+    password: {type: String, required: true},
     surname: String,
     name: String,
     age: String,
